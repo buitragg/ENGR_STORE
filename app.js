@@ -72,7 +72,7 @@ app.get('/', function(req, res)
 app.delete('/delete-game-ajax/', function(req,res,next){
     let data = req.body;
     let gameID = parseInt(data.id);
-    let deleteGame = `DELETE FROM Games WHERE pid = ?`;
+    let deleteGame = `DELETE FROM Games WHERE game_id = ?`;
   
   
           // Run the 1st query
