@@ -6,7 +6,7 @@
 
 var express = require('express');
 var app = express();
-PORT = 4012;
+PORT = 4013;
 
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
@@ -26,7 +26,7 @@ app.set('view engine', '.hbs');                 // Tell express to use the handl
 */
 app.get('/', function(req, res)
     {
-        let query1 = "SELECT * FROM Games;";
+        let query1 = 'SELECT * FROM Games';
         db.pool.query(query1, function(error, rows, fields){
             res.render('index', {data: rows});
         })
@@ -57,6 +57,34 @@ app.get('/', function(req, res)
             }
         })
     })
+
+// Delete function
+app.delete('/delete-game-ajax/', function(req,res,next){
+    let data = req.body;
+    let gameID = parseInt(data.id);
+    let deleteGame = `DELETE FROMGames WHERE pid = ?`;
+  
+  
+          // Run the 1st query
+          db.pool.query(deleteGame, [gameID], function(error, rows, fields){
+              if (error) {
+  
+              // Log the error to the terminal so we know what went wrong, and send the visitor an HTTP response 400 indicating it was a bad request.
+              console.log(error);
+              res.sendStatus(400);
+              }
+  
+              else
+              {
+                
+                          res.sendStatus(204);
+                      }
+                  
+              
+})});
+  
+
+
 /*
     LISTENER
 */
