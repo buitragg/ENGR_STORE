@@ -1,4 +1,5 @@
 -- Creates customers tables
+-- Creates customers tables
 CREATE OR REPLACE TABLE Customers(
     customer_id int not Null auto_increment, -- Primary key
     contact_name varchar(45) not Null,
@@ -97,9 +98,9 @@ Create or Replace Table Transactions(
 );
 
 INSERT INTO Transactions (customer_id, transaction_date, payment_method) VALUES
-( (SELECT customer_id FROM Customers WHERE contact_name='Gian Buitrago'), '2020-01-01', 'cash'),
+((SELECT customer_id FROM Customers WHERE contact_name='Gian Buitrago'), '2020-01-01', 'cash'),
 ((SELECT customer_id FROM Customers WHERE contact_name='Nico Rodriguez'), '2020-01-02', 'credit'),
-((Select customer_id From Customers Where customer_name= 'Tommy Buitrago'), '2020-01-03', 'cash'),
+((Select customer_id From Customers Where contact_name= 'Tommy Buitrago'), '2020-01-03', 'cash'),
 ((SELECT customer_id FROM Customers WHERE contact_name='Gian Buitrago'), '2020-01-04', 'cash'),
 ((SELECT customer_id FROM Customers WHERE contact_name='Phillip Ma'), '2020-01-04', 'credit');
 
