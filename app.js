@@ -27,8 +27,18 @@ app.set('view engine', '.hbs');                 // Tell express to use the handl
 app.get('/', function(req, res)
     {
         let query1 = 'SELECT * FROM Games';
+        let query2 = 'Select * from Genres'
         db.pool.query(query1, function(error, rows, fields){
-            res.render('index', {data: rows});
+            let game = rows
+
+            db.pool.query(query2, (error, rows, fields) => {
+            
+                // Save the planets
+                let genres = rows;
+
+                return res.render('index', {data: people, genres: genres});
+            })
+        
         })
     });
 
@@ -62,7 +72,7 @@ app.get('/', function(req, res)
 app.delete('/delete-game-ajax/', function(req,res,next){
     let data = req.body;
     let gameID = parseInt(data.id);
-    let deleteGame = `DELETE FROMGames WHERE pid = ?`;
+    let deleteGame = `DELETE FROM Games WHERE pid = ?`;
   
   
           // Run the 1st query
@@ -82,6 +92,42 @@ app.delete('/delete-game-ajax/', function(req,res,next){
                   
               
 })});
+  
+//update 
+app.put('/put-game-ajax', function(req,res,next){
+    let data = req.body;
+  
+    let genre = parseInt(data.genre);
+    let game = parseInt(data.game);
+  
+    let queryUpdateGenre = `UPDATE Games SET genre = ? WHERE Games.game_id = ?`;
+    let selectgenre = `SELECT * FROM Genres WHERE genre_id = ?`;
+  
+          // Run the 1st query
+          db.pool.query(queryUpdateGenre, [genre, game], function(error, rows, fields){
+              if (error) {
+  
+              // Log the error to the terminal so we know what went wrong, and send the visitor an HTTP response 400 indicating it was a bad request.
+              console.log(error);
+              res.sendStatus(400);
+              }
+  
+              // If there was no error, we run our second query and return that data so we can use it to update the people's
+              // table on the front-end
+              else
+              {
+                  // Run the second query
+                  db.pool.query(selectgenre, [genre], function(error, rows, fields) {
+  
+                      if (error) {
+                          console.log(error);
+                          res.sendStatus(400);
+                      } else {
+                          res.send(rows);
+                      }
+                  })
+              }
+  })});
   
 
 
