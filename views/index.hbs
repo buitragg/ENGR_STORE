@@ -1,12 +1,38 @@
-<h1>The server is running!</h1>
-<p>If you see this text, the server is <strong>definitely</strong> working!</p>
+
+
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 
-<h1>Home</h1>
 
-    [ <a href="index.html">Home</a> | [ <a href="./index.hbs">Games</a> | <a href="genres.html">Genres</a> | <a href="companies.html">Companies</a>
-    | <a href="customers.html">Customers</a> | <a href="transactions.html">Transactions</a> | <a href="transactiondetails.html">Transaction Details</a>
-    | <a href="companiesandgames.html">Companies and Games</a>]
+<h1>Games</h1>
+
+<div id="nav-container" href="">
+  <style>
+        a {
+            background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 4px;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+        }
+		table, th, td {
+			border: 1px solid black;
+			border-collapse: collapse;
+			padding: 10px;
+		}
+    </style>
+    
+    
+     <a href="index.html">Home</a> |  <a href="/">Games</a> | <a href="/genres">Genres</a> | <a href="/companies">Companies</a>
+	| <a href="/customers">Customers</a> | <a href="/transactions">Transactions</a> | <a href="transactiondetails.html">Transaction Details</a>
+	| <a href="companiesandgames.html">Companies and Games</a>]
+
+</div>
+   
 {{!-- Create a table --}}
 <table id="game-table">
 

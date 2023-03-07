@@ -12,6 +12,7 @@ app.use(express.json())
 app.use(express.urlencoded({extended: true}))
 app.use(express.static('public'))
 
+
 // Database
 var db = require('./database/db-connector');
 
@@ -24,6 +25,68 @@ app.set('view engine', '.hbs');                 // Tell express to use the handl
 /*
     ROUTES
 */
+
+
+/*
+    !!GENRE Routes
+*/
+app.get('/genres', function(req, res)
+    {  
+        let query1 = "SELECT * from Genres";               // Define our query
+
+        db.pool.query(query1, function(error, rows, fields){    // Execute the query
+
+            res.render('genres', {data: rows});                  // Render the index.hbs file, and also send the renderer
+        })                                                      // an object where 'data' is equal to the 'rows' we
+    });    
+/*  
+
+/*
+    !!Companies Routes
+*/
+app.get('/companies', function(req, res)
+    {  
+        let query1 = "SELECT * from Companies";               // Define our query
+
+        db.pool.query(query1, function(error, rows, fields){    // Execute the query
+
+            res.render('companies', {data: rows});                  // Render the index.hbs file, and also send the renderer
+        })                                                      // an object where 'data' is equal to the 'rows' we
+    });    
+/*  
+
+/*
+    !!Customers Routes 
+*/
+app.get('/customers', function(req, res)
+    {  
+        let query1 = "SELECT * from Customers";               // Define our query
+
+        db.pool.query(query1, function(error, rows, fields){    // Execute the query
+
+            res.render('customers', {data: rows});                  // Render the index.hbs file, and also send the renderer
+        })                                                      // an object where 'data' is equal to the 'rows' we
+    });    
+/*  
+
+/*
+    !!Transactions Routes 
+*/
+app.get('/transactions', function(req, res)
+    {  
+        let query1 = "SELECT * from Transactions";               // Define our query
+
+        db.pool.query(query1, function(error, rows, fields){    // Execute the query
+
+            res.render('transactions', {data: rows});                  // Render the index.hbs file, and also send the renderer
+        })                                                      // an object where 'data' is equal to the 'rows' we
+    });    
+/*  
+
+
+
+    !!GAMES Routes 
+*/
 app.get('/', function(req, res)
     {
         let query1 = 'SELECT * FROM Games';
@@ -32,7 +95,7 @@ app.get('/', function(req, res)
         })
     });
 
-    app.post('/add-game-form', function(req, res){
+app.post('/add-game-form', function(req, res){
         // Capture the incoming data and parse it back to a JS object
         let data = req.body;
 
@@ -56,7 +119,12 @@ app.get('/', function(req, res)
                 res.redirect('/');
             }
         })
-    })
+});
+ 
+   
+
+
+
 
 // Delete function
 app.delete('/delete-game-ajax/', function(req,res,next){

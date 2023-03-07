@@ -1,7 +1,7 @@
 {
   "name": "task1",
   "version": "1.0.0",
-  "description": "",
+  "description": "test",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -12,6 +12,16 @@
     "express": "^4.18.2",
     "express-handlebars": "^7.0.1",
     "forever": "^4.0.3",
-    "mysql": "^2.18.1"
-  }
+    "mysql": "^2.18.1",
+    "start": "^5.1.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/buitragg/ENGR_STORE.git"
+  },
+  "bugs": {
+    "url": "https://github.com/buitragg/ENGR_STORE/issues"
+  },
+  "homepage": "https://github.com/buitragg/ENGR_STORE#readme",
+  "devDependencies": {}
 }
