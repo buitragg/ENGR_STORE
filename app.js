@@ -13,6 +13,7 @@ app.use(express.urlencoded({extended: true}))
 app.use(express.static('public'))
 
 
+
 // Database
 var db = require('./database/db-connector');
 
@@ -83,7 +84,37 @@ app.get('/transactions', function(req, res)
     });    
 /*  
 
+/*
+    !!Transaction Details Routes 
+*/
+app.get('/transaction_details', function(req, res)
+    {  
+        let query1 = "SELECT * from TransactionDetails";               // Define our query
 
+        db.pool.query(query1, function(error, rows, fields){    // Execute the query
+
+            res.render('transaction_details', {data: rows});                  // Render the index.hbs file, and also send the renderer
+        })                                                      // an object where 'data' is equal to the 'rows' we
+    });    
+/*
+
+/*
+    !!Companies and Games Routes 
+*/
+app.get('/companies_and_games', function(req, res)
+    {  
+        let query1 = "SELECT * from CompaniesAndGames";               // Define our query
+
+        db.pool.query(query1, function(error, rows, fields){    // Execute the query
+
+            res.render('companies_and_games', {data: rows});                  // Render the index.hbs file, and also send the renderer
+        })                                                      // an object where 'data' is equal to the 'rows' we
+    });   
+    
+    
+
+
+/*
 
     !!GAMES Routes 
 */
@@ -121,10 +152,6 @@ app.post('/add-game-form', function(req, res){
         })
 });
  
-   
-
-
-
 
 // Delete function
 app.delete('/delete-game-ajax/', function(req,res,next){
@@ -190,7 +217,7 @@ app.put('/put-game-ajax', function(req,res,next){
 
 
 /*
-    LISTENER
+   !! LISTENER
 */
 app.listen(PORT, function(){
     console.log('Express started on http://localhost:' + PORT + '; press Ctrl-C to terminate.')

@@ -62,8 +62,10 @@ CREATE OR REPLACE TABLE Games(
 
 -- Create Companies and games transaction table
 CREATE OR REPLACE Table CompaniesAndGames(
+    id int Not Null auto_increment,
 	game_id int NOT NULL,
     company_id int NOT NULL,
+    Primary Key (id),
     Foreign Key (game_id) references Games(game_id),
     Foreign Key (company_id) references Companies(company_id)
 );

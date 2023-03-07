@@ -1,10 +1,10 @@
 <html>
 <head>
-	<title>Customers</title>
+	<title>Companies and Games</title>
 	<link rel="stylesheet" href="css/app.css">
 </head>
 <body>
-	<h1>Customers</h1>
+	<h1>Companies and Games</h1>
 
  <div id="nav-container" href="">
     
@@ -13,9 +13,10 @@
 	| <a href="/customers">Customers</a> | <a href="/transactions">Transactions</a> | <a href="/transaction_details">Transaction Details</a>
 	| <a href="/companies_and_games">Companies and Games</a>]
 
+
 </div>
 
-<table id="customers-table">
+<table id="companyGames-table">
 
     {{!-- Header section --}}
     <thead>
@@ -37,13 +38,8 @@
         {{!-- For each row, print the id, fname, lname, homeworld and age, in order --}}
         {{#each data}}
         <tr data-value ={{this.id}}>
-            <td>{{this.customer_id}}</td>
-            <td>{{this.contact_name}}</td>  
-            <td>{{this.email}}</td>
-            <td>{{this.phone_number}}</td>
-            <td>{{this.birthdate}}</td>
-            <td>{{this.sign_up_date}}</td>
-            <td>{{this.total_purchases}}</td>
+            <td>{{this.game_id}}</td>
+            <td>{{this.game_id}}</td>  
         </tr>
         {{/each}}
     </tbody>
