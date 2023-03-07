@@ -43,7 +43,7 @@
         {{/each}}
     </tbody>
 </table>
-<script src="../public/js/delete_game.js"></script>
+<script src="../js/delete_game.js"></script>
 
 
 <h2>Add A Game</h2>
@@ -61,12 +61,8 @@
     <label for="input-inventory">Inventory: </label>
     <input type="number" name="input-inventory" id="input-inventory">
 
-    <select name="input-genre" id="input-genre-ajax">
-        <option value="">Genre</option>
-        {{#each planets}}
-        <option value="{{this.id}}">{{this.name}}</option>
-        {{/each}}
-    </select>
+    <label for="input-genre">Genre ID: </label>
+    <input type="number" name="input-genre" id="input-genre">
 
     <input type="submit">
 </form>
@@ -76,7 +72,7 @@
 <form id="search-person-html" method='GET' action='/'>
     <label for="input-lname">Search by Last Name: </label>
     <input type="text" name="lname" id="input-lname-html-search">
-    
+
     <input type="submit">
     <a href='/'><button>Reset</button></a>
 </form>
@@ -104,4 +100,4 @@
 
 </form>
 
-<script src="../public/js/update_game.js"></script>
+<script src="../js/update_game.js"></script>
