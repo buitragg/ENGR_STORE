@@ -13,14 +13,8 @@
 	| <a href="/companies_and_games">Companies and Games</a>]
 
  </h2>
-    
-    
-     
 
-
-
-
-<table id="companies-table">
+<table id="company-table">
 
     {{!-- Header section --}}
     <thead>
@@ -48,3 +42,16 @@
         {{/each}}
     </tbody>
 </table>
+
+<!-- /views/index.hbs -->
+
+{{!-- Form to add a record to the table  --}}
+<h2>Add a New Company</h2>
+<p>To add a new company, please enter their information below and click 'Submit'!</p>
+<form id="add-company-form" method="POST" action="/add-company-form">
+    <label for="input-company">Company: </label>
+    <input type="text" name="input-company" id="input-company">
+
+    <input type="submit">
+</form>
+

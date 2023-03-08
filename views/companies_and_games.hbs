@@ -38,9 +38,21 @@
         {{!-- For each row, print the id, fname, lname, homeworld and age, in order --}}
         {{#each data}}
         <tr data-value ={{this.id}}>
+            <td>{{this.id}}</td>
             <td>{{this.game_id}}</td>
-            <td>{{this.game_id}}</td>  
+            <td>{{this.company_id}}</td>  
         </tr>
         {{/each}}
     </tbody>
 </table>
+<h2>Add a New Game and Company </h2>
+<p>To add a new Games and Company,  please enter their information below and click 'Submit'!</p>
+
+<form id="add-c&g-form" method="POST" action="/add-c&g-form">
+    <label for="input-game">Game: </label>
+        <input type="text" name="input-game" id="input-game">
+    <label for="input-company">Company: </label>
+    <input type="text" name="input-company" id="input-company">
+
+    <input type="submit">
+</form>

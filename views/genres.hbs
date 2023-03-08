@@ -45,3 +45,16 @@
         {{/each}}
     </tbody>
 </table>
+
+{{!-- Form to add a record to the table  --}}
+<h2>Add a New Genre</h2>
+<p>To add a new Genre, please enter their information below and click 'Submit'!</p>
+<form id="add-genre-form" method="POST" action="/add-genre-form">
+    <label for="input-genre">Genre: </label>
+    <input type="text" name="input-genre" id="input-genre">
+    <label for="input-description">Description: </label>
+    <input type="text" name="input-description" id="input-description">
+
+
+    <input type="submit">
+</form>

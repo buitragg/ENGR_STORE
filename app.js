@@ -6,7 +6,7 @@
 
 var express = require('express');
 var app = express();
-PORT = 4015;
+PORT = 4014;
 
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
@@ -39,12 +39,48 @@ app.get('/genres', function(req, res)
 
             res.render('genres', {data: rows});                  // Render the index.hbs file, and also send the renderer
         })                                                      // an object where 'data' is equal to the 'rows' we
-    });    
+    }); 
+
+//post for adding genre
+app.post('/add-genre-form', function(req, res){
+        // Capture the incoming data and parse it back to a JS object
+        let data = req.body;
+
+        let description = parseInt(data['input-description']);
+        if (isNaN(description))
+        {
+            description = 'NULL'
+        }
+    
+        // Create the query and run it on the database
+        query1 = `INSERT INTO Genres (genre_name, description) VALUES ('${data['input-genre']}', ${description})`;
+        db.pool.query(query1, function(error, rows, fields){
+    
+            // Check to see if there was an error
+            if (error) {
+    
+                // Log the error to the terminal so we know what went wrong, and send the visitor an HTTP response 400 indicating it was a bad request.
+                console.log(error)
+                res.sendStatus(400);
+            }
+    
+            // If there was no error, we redirect back to our root route, which automatically runs the SELECT * FROM bsg_people and
+            // presents it on the screen
+            else
+            {
+                res.redirect('/');
+            }
+        })
+ }) 
 /*  
 
 /*
     !!Companies Routes
 */
+// app.js - ROUTES section
+
+//get
+
 app.get('/companies', function(req, res)
     {  
         let query1 = "SELECT * from Companies";               // Define our query
@@ -53,8 +89,65 @@ app.get('/companies', function(req, res)
 
             res.render('companies', {data: rows});                  // Render the index.hbs file, and also send the renderer
         })                                                      // an object where 'data' is equal to the 'rows' we
-    });    
+    }); 
+
+
+app.post('/add-company-form', function(req, res){
+    // Capture the incoming data and parse it back to a JS object
+    let data = req.body;
+
+    // Create the query and run it on the database
+    query1 = `INSERT INTO Companies (company_name) VALUES ('${data['input-company']}')`;
+    db.pool.query(query1, function(error, rows, fields){
+
+        // Check to see if there was an error
+        if (error) {
+
+            // Log the error to the terminal so we know what went wrong, and send the visitor an HTTP response 400 indicating it was a bad request.
+            console.log(error)
+            res.sendStatus(400);
+        }
+
+        // If there was no error, we redirect back to our root route, which automatically runs the SELECT * FROM bsg_people and
+        // presents it on the screen
+        else
+        {
+            res.redirect('/');
+        }
+    })
+}) 
+
+// post for adding company 
+
+// app.js
+
+app.post('/add-company-form', function(req, res){
+    // Capture the incoming data and parse it back to a JS object
+    let data = req.body;
+
+    // Create the query and run it on the database
+    query1 = `INSERT INTO Companies (company_name) VALUES ('${data['input-company']}')`;
+    db.pool.query(query1, function(error, rows, fields){
+
+        // Check to see if there was an error
+        if (error) {
+
+            // Log the error to the terminal so we know what went wrong, and send the visitor an HTTP response 400 indicating it was a bad request.
+            console.log(error)
+            res.sendStatus(400);
+        }
+
+        // If there was no error, we redirect back to our root route, which automatically runs the SELECT * FROM bsg_people and
+        // presents it on the screen
+        else
+        {
+            res.redirect('/');
+        }
+    })
+}) 
 /*  
+
+
 
 /*
     !!Customers Routes 
@@ -111,7 +204,32 @@ app.get('/companies_and_games', function(req, res)
         })                                                      // an object where 'data' is equal to the 'rows' we
     });   
     
-    
+// post for adding company and games
+
+app.post('/add-c&g-form', function(req, res){
+    // Capture the incoming data and parse it back to a JS object
+    let data = req.body;
+
+    // Create the query and run it on the database
+    query1 = `INSERT INTO CompaniesAndGames (game_id, company_id) VALUES ('${data['input-game']}', '${data['input-company']}')`;
+    db.pool.query(query1, function(error, rows, fields){
+
+        // Check to see if there was an error
+        if (error) {
+
+            // Log the error to the terminal so we know what went wrong, and send the visitor an HTTP response 400 indicating it was a bad request.
+            console.log(error)
+            res.sendStatus(400);
+        }
+
+        // If there was no error, we redirect back to our root route, which automatically runs the SELECT * FROM bsg_people and
+        // presents it on the screen
+        else
+        {
+            res.redirect('/');
+        }
+    })
+}) 
 
 
 /*
