@@ -47,31 +47,23 @@
     article {}
       #topic1 {}
       #topic2 {}
-  div {background-color: #4CAF50; /* Green */
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    border-radius: 4px;
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);}
+  div { /* Green */
+}
   aside {}
   footer {}
   
   /* ----- Anchors ----- Text links */
   a {
     background-color: #4CAF50; /* Green */
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    border-radius: 4px;
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 4px;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)
   }
   a:link {
         
@@ -128,12 +120,11 @@
   
   /*  ----- Table ----- */
   table {
-    margin: 0 0 40px 0;
-  width: 100%;
+ 
+  width: auto;
+  margin-top: 100px;
   box-shadow: 0 1px 3px rgba(0,0,0,0.2);
-  display: table;
-    @media screen and (max-width: 580px);
-      display: block
+ 
   }
   caption {}
   thead {
