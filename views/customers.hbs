@@ -7,8 +7,8 @@
 	<h1>Customers</h1>
 
  <div id="nav-container" href="">
-    
-    
+
+
       <a href="index.html">Home</a> |  <a href="/">Games</a> | <a href="/genres">Genres</a> | <a href="/companies">Companies</a>
 	| <a href="/customers">Customers</a> | <a href="/transactions">Transactions</a> | <a href="/transaction_details">Transaction Details</a>
 	| <a href="/companies_and_games">Companies and Games</a>]
@@ -38,7 +38,7 @@
         {{#each data}}
         <tr data-value ={{this.id}}>
             <td>{{this.customer_id}}</td>
-            <td>{{this.contact_name}}</td>  
+            <td>{{this.contact_name}}</td>
             <td>{{this.email}}</td>
             <td>{{this.phone_number}}</td>
             <td>{{this.birthdate}}</td>
@@ -48,3 +48,27 @@
         {{/each}}
     </tbody>
 </table>
+
+<h2>Add a New Customer</h2>
+<p>To add a new Customer, please enter their information below and click 'Submit'!</p>
+<form id="add-customer-form" method="POST" action="/add-customer-form">
+    <label for="input-name">Name: </label>
+    <input type="text" name="input-name" id="input-name">
+
+    <label for="input-email">Email: </label>
+    <input type="text" name="input-email" id="input-email">
+
+    <label for="input-number">Phone Number: </label>
+    <input type="text" name="input-number" id="input-number">
+
+    <label for="input-birthday">Birthday: </label>
+    <input type="text" name="input-birthday" id="input-birthday">
+
+    <label for="input-signdate">Sign Up Date: </label>
+    <input type="text" name="input-signdate" id="input-signdate">
+
+    <label for="input-purchases">Total Purchases: </label>
+    <input type="number" name="input-purchases" id="input-purchases">
+
+    <input type="submit">
+</form>

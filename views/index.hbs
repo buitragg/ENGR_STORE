@@ -25,14 +25,14 @@
 			padding: 10px;
 		}
     </style>
-    
-    
+
+
      <a href="index.html">Home</a> |  <a href="/">Games</a> | <a href="/genres">Genres</a> | <a href="/companies">Companies</a>
 	| <a href="/customers">Customers</a> | <a href="/transactions">Transactions</a> | <a href="transactiondetails.html">Transaction Details</a>
 	| <a href="/companies_and_games">Companies and Games</a>]
 
 </div>
-   
+
 {{!-- Create a table --}}
 <table id="game-table">
 
@@ -87,20 +87,26 @@
     <label for="input-inventory">Inventory: </label>
     <input type="number" name="input-inventory" id="input-inventory">
 
-    <label for="input-genre">Genre ID: </label>
-    <input type="number" name="input-genre" id="input-genre">
+        <select name="input-genre" id="input-genre">
+        <option value="">Select a Genre:</option>
+        {{#each genres}}
+        <option value="{{this.id}}">{{this.genre_name}}</option>
+        {{/each}}
+    </select>
+
+    {{!-- <label for="input-genre">Genre ID: </label>
+    <input type="number" name="input-genre" id="input-genre"> --}}
 
     <input type="submit">
 </form>
 
-<h2>Search Using an HTML Form</h2>
-<p>Search by last name using the field below. Partial last names are OK too!</p>
+<h2>Search for a Game!</h2>
+<p>Search by Game name using the field below. Partial names are OK too!</p>
 <form id="search-person-html" method='GET' action='/'>
-    <label for="input-lname">Search by Last Name: </label>
-    <input type="text" name="lname" id="input-lname-html-search">
+    <label for="input-gname">Search by Game Name: </label>
+    <input type="text" name="gname" id="input-gname-html-search">
 
     <input type="submit">
-    <a href='/'><button>Reset</button></a>
 </form>
 
 <h2>Update Games Genre</h2>
@@ -118,8 +124,8 @@
     <label for="input-ggenre">Genre:</label>
     <select name="input-ggenre" id="input-genre-update">
         <option>Select a Genre</option>
-        {{#each planets}}
-        <option value="{{this.id}}">{{this.game_name}}</option>
+        {{#each genres}}
+        <option value="{{this.id}}">{{this.genre_name}}</option>
         {{/each}}
     </select>
     <input type="submit">
