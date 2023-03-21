@@ -9,7 +9,7 @@
  <div id="nav-container" href="">
     
     
-      <a href="index.html">Home</a> |  <a href="/">Games</a> | <a href="/genres">Genres</a> | <a href="/companies">Companies</a>
+      <a href="/home">Home</a> |  <a href="/">Games</a> | <a href="/genres">Genres</a> | <a href="/companies">Companies</a>
 	| <a href="/customers">Customers</a> | <a href="/transactions">Transactions</a> | <a href="/transaction_details">Transaction Details</a>
 	| <a href="/companies_and_games">Companies and Games</a>]
 
@@ -49,10 +49,19 @@
 <p>To add a new Games and Company,  please enter their information below and click 'Submit'!</p>
 
 <form id="add-c&g-form" method="POST" action="/add-c&g-form">
-    <label for="input-game">Game: </label>
-        <input type="text" name="input-game" id="input-game">
-    <label for="input-company">Company: </label>
-    <input type="text" name="input-company" id="input-company">
+     <select name="input-game" id="input-game">
+        <option value="">Select a Game:</option>
+        {{#each games}}
+        <option value="{{this.game_id}}">{{this.game_name}}</option>
+        {{/each}}
+    </select>
+     <select name="input-company" id="input-company">
+        <option value="">Select a Company: </option>
+        {{#each companies}}
+        <option value="{{this.company_id}}">{{this.company_name}}</option>
+        {{/each}}
+    </select>
 
     <input type="submit">
+
 </form>

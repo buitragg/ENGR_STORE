@@ -1,10 +1,9 @@
 
-
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <html>
 <head>
 	<title>Games</title>
 	<link rel="stylesheet" href="css/app.css">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 </head>
 <body>
 
@@ -13,11 +12,13 @@
 <div id="nav-container" href="">
 
 
-     <a href="index.html">Home</a> |  <a href="/">Games</a> | <a href="/genres">Genres</a> | <a href="/companies">Companies</a>
-	| <a href="/customers">Customers</a> | <a href="/transactions">Transactions</a> | <a href="transactiondetails.html">Transaction Details</a>
+     <a href="/home">Home</a> |  <a href="/">Games</a> | <a href="/genres">Genres</a> | <a href="/companies">Companies</a>
+	| <a href="/customers">Customers</a> | <a href="/transactions">Transactions</a> | <a href="/transaction_details">Transaction Details</a>
 	| <a href="/companies_and_games">Companies and Games</a>]
 
 </div>
+
+
 
 {{!-- Create a table --}}
 <table id="game-table">
@@ -47,7 +48,7 @@
             <td>{{this.game_id}}</td>
             <td>{{this.game_name}}</td>
             <td>{{this.release_year}}</td>
-            <td>{{this.price}}</td>
+            <td>${{this.price}}</td>
             <td>{{this.inventory}}</td>
             <td>{{this.genre_id}}</td>
             <td><button onclick="deleteGame({{this.game_id}})">DELETE</button></td>
@@ -55,17 +56,20 @@
         {{/each}}
     </tbody>
 </table>
-<script src="../js/delete_game.js"></script>
+<script src="../public/js/delete_game.js"></script>
 
+<!-- /views/index.hbs -->
 
-<h2>Add A Game</h2>
-<p>To add a new game, please enter the information below and click `Submit`!</p>
+{{!-- Form to add a record to the table  --}}
+<!-- /views/index.hbs -->
+<h2>Add Game</h2>
+<p>To add a new game, please enter their information below nad click `Submit`!</p>
 <form id="add-game-form" method="POST" action="/add-game-form">
-    <label for="input-gname">Game Name: </label>
-    <input type="text" name="input-gname" id="input-gname">
-
-    <label for="input-year">Release Year: </label>
-    <input type="number" name="input-year" id="input-year">
+    <label for="input-game_name">Game Name: </label>
+    <input type="text" name="input-game_name" id="input-game_name">
+    
+    <label for="input-release_year">Release Year: </label>
+    <input type="number" min="1900" name="input-release_year" id="input-release_year">
 
     <label for="input-price">Price: </label>
     <input type="number" name="input-price" id="input-price">
@@ -73,49 +77,53 @@
     <label for="input-inventory">Inventory: </label>
     <input type="number" name="input-inventory" id="input-inventory">
 
-        <select name="input-genre" id="input-genre">
-        <option value="">Select a Genre:</option>
+    <select name="input-genre" id="input-genre">
+        <option value="">Genre:</option>
         {{#each genres}}
-        <option value="{{this.id}}">{{this.genre_name}}</option>
+        <option value="{{this.genre_id}}">{{this.genre_name}}</option>
         {{/each}}
     </select>
 
-    {{!-- <label for="input-genre">Genre ID: </label>
-    <input type="number" name="input-genre" id="input-genre"> --}}
 
     <input type="submit">
 </form>
 
-<h2>Search for a Game!</h2>
-<p>Search by Game name using the field below. Partial names are OK too!</p>
-<form id="search-person-html" method='GET' action='/'>
-    <label for="input-gname">Search by Game Name: </label>
-    <input type="text" name="gname" id="input-gname-html-search">
-
+<h2>Search</h2>
+<form id="search-genre-html" method='GET' action='/'>
+    <label for="input-genre">Search by Genre: </label>
+    <select name="genre" id="input-genre">
+        <option value="">Genre:</option>
+        {{#each genres}}
+        <option value="{{this.genre_id}}">{{this.genre_name}}</option>
+        {{/each}}
+    </select>
+    
     <input type="submit">
+    <a href='/'><button>Reset</button></a>
 </form>
 
-<h2>Update Games Genre</h2>
-<p>To update a specific Games Genre select their name from the drop-down menu on the left and their desired Genre from the drop down menu on the right</p>
+
+<h2>Updating A Game's Genre Form</h2>
+<p>To update a specific Games Genre select their name from the drop-down menu</p>
 <form id="update-game-form-ajax">
 
-    <label for="input-fullname">Game: </label>
-    <select name="input-name" id="mySelect">
+    <label for="input-game_name">Game name: </label>
+    <select name="input-game_name" id="mySelect">
         <option value="test">Select a Game</option>
         {{#each data}}
-        <option value="{{this.id}}">{{this.game_name}}</option>
+        <option value="{{this.game_id}}">{{this.game_name}}</option>
         {{/each}}
     </select>
 
-    <label for="input-ggenre">Genre:</label>
-    <select name="input-ggenre" id="input-genre-update">
+    <label for="input-genre">Genre: </label>
+    <select name="input-genre" id="input-genre-update">
         <option>Select a Genre</option>
         {{#each genres}}
-        <option value="{{this.id}}">{{this.genre_name}}</option>
+        <option value="{{this.genre_id}}">{{this.genre_name}}</option>
         {{/each}}
     </select>
     <input type="submit">
 
 </form>
 
-<script src="../js/update_game.js"></script>
+<script src="../public/js/update_game.js"></script>

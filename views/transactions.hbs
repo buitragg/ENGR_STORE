@@ -10,7 +10,7 @@
 
     
     
-     <a href="index.html">Home</a> |  <a href="/">Games</a> | <a href="/genres">Genres</a> | <a href="/companies">Companies</a>
+     <a href="/home">Home</a> |  <a href="/">Games</a> | <a href="/genres">Genres</a> | <a href="/companies">Companies</a>
 	| <a href="/customers">Customers</a> | <a href="/transactions">Transactions</a> | <a href="/transaction_details">Transaction Details</a>
 	| <a href="/companies_and_games">Companies and Games</a>]
 
@@ -47,3 +47,24 @@
         {{/each}}
     </tbody>
 </table>
+
+<!-- /views/index.hbs -->
+<h2>Add a Transaction</h2>
+<p>To add a new transaction, please enter their information below and click `Submit`!</p>
+<form id="add-transaction-form" method="POST" action="/add-transaction-form">
+
+    <select name="input-customer" id="input-customer">
+        <option value="">Select Customer:</option>
+        {{#each customers}}
+        <option value="{{this.customer_id}}">{{this.contact_name}}</option>
+        {{/each}}
+    </select>
+    
+    <label for="input-date">Date: </label>
+    <input type="date" name="input-date" id="input-date">
+
+    <label for="input-payment">Payment Method: </label>
+    <input type="text" name="input-payment" id="input-payment">
+
+    <input type="submit">
+</form>

@@ -1,3 +1,5 @@
+
+
 function deleteGame(gameID) {
   let link = '/delete-game-ajax/';
   let data = {
@@ -15,17 +17,10 @@ function deleteGame(gameID) {
   });
 }
 
-function deleteRow(gameID){
-    let table = document.getElementById("game-table");
-    for (let i = 0, row; row = table.rows[i]; i++) {
-       if (table.rows[i].getAttribute("data-value") == gameID) {
-            table.deleteRow(i);
-            break;
-       }
-    }
-}
 
-/*function deleteGame(gameID) {
+
+
+function deleteGame(gameID) {
   // Put our data we want to send in a javascript object
   let data = {
       id: gameID
@@ -64,4 +59,4 @@ function deleteRow(gameID){
           break;
      }
   }
-}*/
+}

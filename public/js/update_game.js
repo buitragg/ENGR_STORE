@@ -14,20 +14,12 @@ updatePersonForm.addEventListener("submit", function (e) {
     // Get the values from the form fields
     let gameNameValue = inputName.value;
     let genreValue = inputgenre.value;
-    
-    // currently the database table for bsg_people does not allow updating values to NULL
-    // so we must abort if being bassed NULL for homeworld
-
-    if (isNaN(genreValue)) 
-    {
-        return;
-    }
 
 
     // Put our data we want to send in a javascript object
     let data = {
-        gameName: gameNameValue,
-        genre: genreValue,
+        game_name: gameNameValue,
+        genre_id: genreValue,
     }
     
     // Setup our AJAX request
@@ -40,7 +32,7 @@ updatePersonForm.addEventListener("submit", function (e) {
         if (xhttp.readyState == 4 && xhttp.status == 200) {
 
             // Add the new data to the table
-            updateRow(xhttp.response, gameName);
+            updateRow(xhttp.response, gameNameValue);
 
         }
         else if (xhttp.readyState == 4 && xhttp.status != 200) {
@@ -71,10 +63,11 @@ function updateRow(data, gameID){
             let td = updateRowIndex.getElementsByTagName("td")[5];
 
             // Reassign homeworld to our value we updated to
-            td.innerHTML = parsedData[0].name; 
+            td.innerHTML = parsedData[0].genre_name; 
        }
     }
 }
+
 
 // updates drop down when a game is deleted
 function deleteRow(gameID){
